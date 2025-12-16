@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cloud Nation - Dashboard</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom font for a modern look */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* Custom cloud SVG styling for consistency */
+        /* Removed .cloud-svg filter as we'll use SVG gradients for better depth */
+    </style>
+</head>
+<body class="bg-gradient-to-r from-blue-500 to-purple-600 min-h-screen flex flex-col items-center justify-center p-4">
+    <div class="bg-white rounded-xl shadow-2xl p-8 md:p-12 max-w-4xl w-full text-center transform transition-all duration-300 hover:scale-105">
+        <!-- Cloud Nation Logo with SVG Cloud - Added to Dashboard -->
+        <div class="relative w-48 h-24 mx-auto mb-8"> <!-- Adjusted size and added mx-auto for centering -->
+            <svg viewBox="0 0 400 200" class="cloud-svg" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <linearGradient id="cloudGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                        <stop offset="0%" stop-color="#FFFFFF" />
+                        <stop offset="100%" stop-color="#E0E0E0" />
+                    </linearGradient>
+                    <filter id="shadow" x="-50%" y="-50%" width="200%" height="200%">
+                        <feDropShadow dx="0" dy="4" stdDeviation="4" flood-color="rgba(0,0,0,0.2)"/>
+                    </filter>
+                </defs>
+                <!-- Main cloud shape with gradient and filter for shadow -->
+                <path d="M200 70C170 20 130 0 90 0C50 0 10 30 0 70C-10 110 10 150 50 170C90 190 140 170 180 150C220 130 250 160 290 160C330 160 370 130 390 90C410 50 380 10 340 10C300 10 260 40 200 70Z" fill="url(#cloudGradient)" filter="url(#shadow)"/>
+                <!-- Smaller cloud bumps for a more natural look, also with gradient and shadow -->
+                <circle cx="280" cy="70" r="40" fill="url(#cloudGradient)" filter="url(#shadow)"/>
+                <circle cx="120" cy="60" r="50" fill="url(#cloudGradient)" filter="url(#shadow)"/>
+                <circle cx="340" cy="110" r="45" fill="url(#cloudGradient)" filter="url(#shadow)"/>
+                <circle cx="60" cy="110" r="40" fill="url(#cloudGradient)" filter="url(#shadow)"/>
+
+                <!-- Text "Cloud Nation" on the cloud -->
+                <text x="50%" y="100" text-anchor="middle" fill="#2563EB" font-size="45" font-weight="bold" class="select-none">
+                    Cloud Nation
+                </text>
+            </svg>
+        </div>
+
+        <h1 class="text-4xl font-extrabold text-gray-800 mb-4">Welcome to Cloud Nation!</h1>
+        <p class="text-xl text-gray-600 mb-8">Your DevOps learning journey continues here.</p>
+
+        <!-- Courses Section -->
+        <section class="mb-10">
+            <h2 class="text-3xl font-bold text-gray-800 mb-6 text-center">Our Courses</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- DevOps Courses -->
+                <div class="bg-blue-50 rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow duration-300">
+                    <h3 class="text-2xl font-semibold text-blue-700 mb-2">Introduction to DevOps</h3>
+                    <p class="text-gray-700">Learn the fundamentals of DevOps principles and practices.</p>
+                    <button class="mt-4 bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 transition duration-150 ease-in-out course-button">
+                        Start Course
+                    </button>
+                </div>
+                <div class="bg-green-50 rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow duration-300">
+                    <h3 class="text-2xl font-semibold text-green-700 mb-2">CI/CD Pipelines with Jenkins</h3>
+                    <p class="text-gray-700">Master continuous integration and delivery with Jenkins.</p>
+                    <button class="mt-4 bg-green-600 text-white py-2 px-4 rounded-md hover:bg-green-700 transition duration-150 ease-in-out course-button">
+                        Continue Learning
+                    </button>
+                </div>
+                <!-- New Courses -->
+                <div class="bg-yellow-50 rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow duration-300">
+                    <h3 class="text-2xl font-semibold text-yellow-700 mb-2">AWS Solutions Architect</h3>
+                    <p class="text-gray-700">Prepare for AWS certification and cloud infrastructure.</p>
+                    <button class="mt-4 bg-yellow-600 text-white py-2 px-4 rounded-md hover:bg-yellow-700 transition duration-150 ease-in-out course-button">
+                        Explore AWS
+                    </button>
+                </div>
+                <div class="bg-purple-50 rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow duration-300">
+                    <h3 class="text-2xl font-semibold text-purple-700 mb-2">Linux for DevOps</h3>
+                    <p class="text-gray-700">Essential Linux commands and scripting for DevOps engineers.</p>
+                    <button class="mt-4 bg-purple-600 text-white py-2 px-4 rounded-md hover:bg-purple-700 transition duration-150 ease-in-out course-button">
+                        Learn Linux
+                    </button>
+                </div>
+                <div class="bg-red-50 rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow duration-300">
+                    <h3 class="text-2xl font-semibold text-red-700 mb-2">Big Data with Hadoop</h3>
+                    <p class="text-gray-700">Understand Hadoop ecosystem for big data processing.</p>
+                    <button class="mt-4 bg-red-600 text-white py-2 px-4 rounded-md hover:bg-red-700 transition duration-150 ease-in-out course-button">
+                        Discover Hadoop
+                    </button>
+                </div>
+                <div class="bg-indigo-50 rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow duration-300">
+                    <h3 class="text-2xl font-semibold text-indigo-700 mb-2">Containerization with Docker</h3>
+                    <p class="text-gray-700">Explore Docker for efficient application deployment.</p>
+                    <button class="mt-4 bg-indigo-600 text-white py-2 px-4 rounded-md hover:bg-indigo-700 transition duration-150 ease-in-out course-button">
+                        Explore Docker
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Batches Name Section -->
+        <section class="mb-10">
+            <h2 class="text-3xl font-bold text-gray-800 mb-6 text-center">Upcoming Batches</h2>
+            <div class="bg-blue-50 rounded-lg p-6 shadow-md">
+                <ul class="list-disc list-inside text-left text-gray-700 space-y-2">
+                    <li><strong>DevOps Masterclass - Batch 101:</strong> Starts August 1, 2025 (Mon-Wed-Fri, 7:00 PM - 9:00 PM IST)</li>
+                    <li><strong>AWS Solutions Architect - Batch 203:</strong> Starts September 15, 2025 (Tue-Thu, 6:00 PM - 8:00 PM IST)</li>
+                    <li><strong>Linux for DevOps - Batch 302:</strong> Starts October 1, 2025 (Weekends, 10:00 AM - 1:00 PM IST)</li>
+                    <li><strong>Big Data with Hadoop - Batch 401:</strong> Starts November 10, 2025 (Mon-Fri, 8:00 PM - 10:00 PM IST)</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Videos Section -->
+        <section class="mb-10">
+            <h2 class="text-3xl font-bold text-gray-800 mb-6 text-center">Learning Videos</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-green-50 rounded-lg p-6 shadow-md">
+                    <h3 class="text-xl font-semibold text-green-700 mb-2">DevOps Fundamentals - Module 1</h3>
+                    <p class="text-gray-700">Introduction to CI/CD concepts and tools.</p>
+                    <a href="#" class="inline-block mt-4 bg-green-600 text-white py-2 px-4 rounded-md hover:bg-green-700 transition duration-150 ease-in-out video-link">Watch Video</a>
+                </div>
+                <div class="bg-yellow-50 rounded-lg p-6 shadow-md">
+                    <h3 class="text-xl font-semibold text-yellow-700 mb-2">AWS EC2 Instance Setup</h3>
+                    <p class="text-gray-700">Step-by-step guide to launching and configuring EC2 instances.</p>
+                    <a href="#" class="inline-block mt-4 bg-yellow-600 text-white py-2 px-4 rounded-md hover:bg-yellow-700 transition duration-150 ease-in-out video-link">Watch Video</a>
+                </div>
+                <div class="bg-purple-50 rounded-lg p-6 shadow-md">
+                    <h3 class="text-xl font-semibold text-purple-700 mb-2">Linux File System Explained</h3>
+                    <p class="text-gray-700">Understanding the Linux directory structure and permissions.</p>
+                    <a href="#" class="inline-block mt-4 bg-purple-600 text-white py-2 px-4 rounded-md hover:bg-purple-700 transition duration-150 ease-in-out video-link">Watch Video</a>
+                </div>
+                <div class="bg-red-50 rounded-lg p-6 shadow-md">
+                    <h3 class="text-xl font-semibold text-red-700 mb-2">Hadoop HDFS Architecture</h3>
+                    <p class="text-gray-700">Deep dive into the Hadoop Distributed File System.</p>
+                    <a href="#" class="inline-block mt-4 bg-red-600 text-white py-2 px-4 rounded-md hover:bg-red-700 transition duration-150 ease-in-out video-link">Watch Video</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Attendance Section -->
+        <section class="mb-10">
+            <h2 class="text-3xl font-bold text-gray-800 mb-6 text-center">Your Attendance</h2>
+            <div class="bg-purple-50 rounded-lg p-6 shadow-md">
+                <p class="text-gray-700 mb-2"><strong>Student Name:</strong> John Doe</p>
+                <p class="text-gray-700 mb-2"><strong>Current Course:</strong> DevOps Masterclass - Batch 101</p>
+                <p class="text-gray-700 mb-2"><strong>Classes Attended (July 2025):</strong> 12 / 15</p>
+                <p class="text-gray-700"><strong>Attendance Rate:</strong> 80%</p>
+                <button class="mt-4 bg-purple-600 text-white py-2 px-4 rounded-md hover:bg-purple-700 transition duration-150 ease-in-out attendance-button">View Full Report</button>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section class="mb-10">
+            <h2 class="text-3xl font-bold text-gray-800 mb-6 text-center">About Cloud Nation</h2>
+            <div class="bg-gray-50 rounded-lg p-6 shadow-md text-left">
+                <p class="text-gray-700 mb-4">Cloud Nation is dedicated to providing high-quality, hands-on training in cutting-edge DevOps technologies. Our expert-led courses are designed to equip you with the skills needed to excel in the cloud-native world.</p>
+                <p class="text-gray-700 mb-4">We offer comprehensive programs in **DevOps, AWS, Linux, Hadoop, and more**, focusing on practical application and real-world scenarios. Our experienced instructors, interactive learning environment, and strong community support ensure that you gain the confidence and expertise to advance your career.</p>
+                <p class="text-gray-700">Join Cloud Nation and transform your future in technology!</p>
+            </div>
+        </section>
+
+        <button id="logoutButton"
+                class="mt-8 bg-red-600 text-white py-3 px-6 rounded-md shadow-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 transition duration-150 ease-in-out">
+            Logout
+        </button>
+
+        <!-- Message Box for alerts -->
+        <div id="messageBox" class="hidden mt-6 p-3 rounded-md text-sm text-center" role="alert"></div>
+    </div>
+
+    <script>
+        // Function to show a custom message box instead of alert()
+        function showMessageBox(message, type = 'info') {
+            const messageBox = document.getElementById('messageBox');
+            messageBox.textContent = message;
+            messageBox.classList.remove('hidden', 'bg-red-100', 'text-red-700', 'bg-green-100', 'text-green-700', 'bg-blue-100', 'text-blue-700');
+
+            if (type === 'error') {
+                messageBox.classList.add('bg-red-100', 'text-red-700');
+            } else if (type === 'success') {
+                messageBox.classList.add('bg-green-100', 'text-green-700');
+            } else { // default to info
+                messageBox.classList.add('bg-blue-100', 'text-blue-700');
+            }
+            messageBox.classList.remove('hidden');
+        }
+
+        document.getElementById('logoutButton').addEventListener('click', function() {
+            showMessageBox('Logging out... (This is a demo. No actual logout occurs.)', 'info');
+            // In a real application, you would clear session data and redirect to the login page
+            // window.location.href = '/login.html'; // Assuming your login page is login.html
+        });
+
+        // Add event listeners for course buttons
+        document.querySelectorAll('.course-button').forEach(button => {
+            button.addEventListener('click', function() {
+                const courseTitle = this.closest('div').querySelector('h3').textContent;
+                showMessageBox(`You clicked to ${this.textContent} for "${courseTitle}".`, 'info');
+            });
+        });
+
+        // Add event listeners for video links
+        document.querySelectorAll('.video-link').forEach(link => {
+            link.addEventListener('click', function(event) {
+                event.preventDefault(); // Prevent default link behavior
+                const videoTitle = this.closest('div').querySelector('h3').textContent;
+                showMessageBox(`Playing video: "${videoTitle}". (This is a demo link.)`, 'info');
+            });
+        });
+
+        // Add event listener for attendance button
+        document.querySelector('.attendance-button').addEventListener('click', function() {
+            showMessageBox('Viewing full attendance report... (This is a demo.)', 'info');
+        });
+    </script>
+</body>
+</html>
