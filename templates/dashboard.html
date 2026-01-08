@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cloud Nation - Dashboard</title>
-    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         /* Custom font for a modern look */
@@ -12,14 +11,17 @@
         body {
             font-family: 'Inter', sans-serif;
         }
-        /* Custom cloud SVG styling for consistency */
-        /* Removed .cloud-svg filter as we'll use SVG gradients for better depth */
+        /* Style for the temporary message for smooth fade-out */
+        .video-message-area {
+            transition: opacity 0.5s ease-in-out;
+            opacity: 0;
+            white-space: nowrap; /* Prevent message from wrapping to the next line */
+        }
     </style>
 </head>
 <body class="bg-gradient-to-r from-blue-500 to-purple-600 min-h-screen flex flex-col items-center justify-center p-4">
     <div class="bg-white rounded-xl shadow-2xl p-8 md:p-12 max-w-4xl w-full text-center transform transition-all duration-300 hover:scale-105">
-        <!-- Cloud Nation Logo with SVG Cloud - Added to Dashboard -->
-        <div class="relative w-48 h-24 mx-auto mb-8"> <!-- Adjusted size and added mx-auto for centering -->
+        <div class="relative w-48 h-24 mx-auto mb-8"> 
             <svg viewBox="0 0 400 200" class="cloud-svg" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <defs>
                     <linearGradient id="cloudGradient" x1="0%" y1="0%" x2="0%" y2="100%">
@@ -30,15 +32,11 @@
                         <feDropShadow dx="0" dy="4" stdDeviation="4" flood-color="rgba(0,0,0,0.2)"/>
                     </filter>
                 </defs>
-                <!-- Main cloud shape with gradient and filter for shadow -->
                 <path d="M200 70C170 20 130 0 90 0C50 0 10 30 0 70C-10 110 10 150 50 170C90 190 140 170 180 150C220 130 250 160 290 160C330 160 370 130 390 90C410 50 380 10 340 10C300 10 260 40 200 70Z" fill="url(#cloudGradient)" filter="url(#shadow)"/>
-                <!-- Smaller cloud bumps for a more natural look, also with gradient and shadow -->
                 <circle cx="280" cy="70" r="40" fill="url(#cloudGradient)" filter="url(#shadow)"/>
                 <circle cx="120" cy="60" r="50" fill="url(#cloudGradient)" filter="url(#shadow)"/>
                 <circle cx="340" cy="110" r="45" fill="url(#cloudGradient)" filter="url(#shadow)"/>
                 <circle cx="60" cy="110" r="40" fill="url(#cloudGradient)" filter="url(#shadow)"/>
-
-                <!-- Text "Cloud Nation" on the cloud -->
                 <text x="50%" y="100" text-anchor="middle" fill="#2563EB" font-size="45" font-weight="bold" class="select-none">
                     Cloud Nation
                 </text>
@@ -48,11 +46,9 @@
         <h1 class="text-4xl font-extrabold text-gray-800 mb-4">Welcome to Cloud Nation!</h1>
         <p class="text-xl text-gray-600 mb-8">Your DevOps learning journey continues here.</p>
 
-        <!-- Courses Section -->
         <section class="mb-10">
             <h2 class="text-3xl font-bold text-gray-800 mb-6 text-center">Our Courses</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <!-- DevOps Courses -->
                 <div class="bg-blue-50 rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow duration-300">
                     <h3 class="text-2xl font-semibold text-blue-700 mb-2">Introduction to DevOps</h3>
                     <p class="text-gray-700">Learn the fundamentals of DevOps principles and practices.</p>
@@ -67,7 +63,6 @@
                         Continue Learning
                     </button>
                 </div>
-                <!-- New Courses -->
                 <div class="bg-yellow-50 rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow duration-300">
                     <h3 class="text-2xl font-semibold text-yellow-700 mb-2">AWS Solutions Architect</h3>
                     <p class="text-gray-700">Prepare for AWS certification and cloud infrastructure.</p>
@@ -99,59 +94,113 @@
             </div>
         </section>
 
-        <!-- Batches Name Section -->
         <section class="mb-10">
             <h2 class="text-3xl font-bold text-gray-800 mb-6 text-center">Upcoming Batches</h2>
             <div class="bg-blue-50 rounded-lg p-6 shadow-md">
-                <ul class="list-disc list-inside text-left text-gray-700 space-y-2">
-                    <li><strong>DevOps Masterclass - Batch 101:</strong> Starts August 1, 2025 (Mon-Wed-Fri, 7:00 PM - 9:00 PM IST)</li>
-                    <li><strong>AWS Solutions Architect - Batch 203:</strong> Starts September 15, 2025 (Tue-Thu, 6:00 PM - 8:00 PM IST)</li>
-                    <li><strong>Linux for DevOps - Batch 302:</strong> Starts October 1, 2025 (Weekends, 10:00 AM - 1:00 PM IST)</li>
-                    <li><strong>Big Data with Hadoop - Batch 401:</strong> Starts November 10, 2025 (Mon-Fri, 8:00 PM - 10:00 PM IST)</li>
-                </ul>
+                <p class="text-xl font-bold text-blue-700 text-center">New batches are starting soon!</p>
             </div>
         </section>
 
-        <!-- Videos Section -->
         <section class="mb-10">
             <h2 class="text-3xl font-bold text-gray-800 mb-6 text-center">Learning Videos</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div class="bg-green-50 rounded-lg p-6 shadow-md">
-                    <h3 class="text-xl font-semibold text-green-700 mb-2">DevOps Fundamentals - Module 1</h3>
-                    <p class="text-gray-700">Introduction to CI/CD concepts and tools.</p>
-                    <a href="#" class="inline-block mt-4 bg-green-600 text-white py-2 px-4 rounded-md hover:bg-green-700 transition duration-150 ease-in-out video-link">Watch Video</a>
+            
+            <div class="bg-gray-100 rounded-xl p-8 shadow-2xl">
+                <h3 class="text-3xl font-extrabold text-blue-800 mb-6 text-center border-b-2 border-blue-200 pb-3">AWS DevOps Batch 1</h3>
+
+                <div class="mb-8 p-4 bg-yellow-50 rounded-lg shadow-inner">
+                    <h4 class="text-2xl font-semibold text-yellow-700 mb-4 border-b border-yellow-300 pb-2">☁️ AWS Services</h4>
+                    
+                    <div class="space-y-4">
+                        <div class="flex justify-between items-center bg-white p-4 rounded-md shadow-sm hover:shadow-lg transition duration-150 border-l-4 border-yellow-600">
+                            <p class="text-gray-700 font-medium">1. Introduction to EC2 & S3</p>
+                            <div class="flex items-center space-x-3">
+                                <span class="video-message-area text-xs py-1 px-2 rounded-md font-bold text-red-700 bg-red-100 hidden"></span>
+                                <a href="https://youtu.be/dgU0vJJzcLA?si=qV6mc84NV_3HPyQu" class="bg-yellow-600 text-white py-1 px-3 rounded-md hover:bg-yellow-700 transition duration-150 ease-in-out video-link text-sm">Watch Video</a>
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-center bg-white p-4 rounded-md shadow-sm hover:shadow-lg transition duration-150 border-l-4 border-yellow-600">
+                            <p class="text-gray-700 font-medium">2. VPC Networking Fundamentals</p>
+                            <div class="flex items-center space-x-3">
+                                <span class="video-message-area text-xs py-1 px-2 rounded-md font-bold text-red-700 bg-red-100 hidden"></span>
+                                <a href="#" class="bg-yellow-600 text-white py-1 px-3 rounded-md hover:bg-yellow-700 transition duration-150 ease-in-out video-link text-sm">Watch Video</a>
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-center bg-white p-4 rounded-md shadow-sm hover:shadow-lg transition duration-150 border-l-4 border-yellow-600">
+                            <p class="text-gray-700 font-medium">3. IAM Roles and Policies</p>
+                            <div class="flex items-center space-x-3">
+                                <span class="video-message-area text-xs py-1 px-2 rounded-md font-bold text-red-700 bg-red-100 hidden"></span>
+                                <a href="#" class="bg-yellow-600 text-white py-1 px-3 rounded-md hover:bg-yellow-700 transition duration-150 ease-in-out video-link text-sm">Watch Video</a>
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-center bg-white p-4 rounded-md shadow-sm hover:shadow-lg transition duration-150 border-l-4 border-yellow-600">
+                            <p class="text-gray-700 font-medium">4. Introduction to RDS and DynamoDB</p>
+                            <div class="flex items-center space-x-3">
+                                <span class="video-message-area text-xs py-1 px-2 rounded-md font-bold text-red-700 bg-red-100 hidden"></span>
+                                <a href="#" class="bg-yellow-600 text-white py-1 px-3 rounded-md hover:bg-yellow-700 transition duration-150 ease-in-out video-link text-sm">Watch Video</a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="bg-yellow-50 rounded-lg p-6 shadow-md">
-                    <h3 class="text-xl font-semibold text-yellow-700 mb-2">AWS EC2 Instance Setup</h3>
-                    <p class="text-gray-700">Step-by-step guide to launching and configuring EC2 instances.</p>
-                    <a href="#" class="inline-block mt-4 bg-yellow-600 text-white py-2 px-4 rounded-md hover:bg-yellow-700 transition duration-150 ease-in-out video-link">Watch Video</a>
+
+                <div class="mb-8 p-4 bg-purple-50 rounded-lg shadow-inner">
+                    <h4 class="text-2xl font-semibold text-purple-700 mb-4 border-b border-purple-300 pb-2">🐧 Linux</h4>
+                    
+                    <div class="space-y-4">
+                        <div class="flex justify-between items-center bg-white p-4 rounded-md shadow-sm hover:shadow-lg transition duration-150 border-l-4 border-purple-600">
+                            <p class="text-gray-700 font-medium">1. Essential Commands & Shell</p>
+                            <div class="flex items-center space-x-3">
+                                <span class="video-message-area text-xs py-1 px-2 rounded-md font-bold text-red-700 bg-red-100 hidden"></span>
+                                <a href="#" class="bg-purple-600 text-white py-1 px-3 rounded-md hover:bg-purple-700 transition duration-150 ease-in-out video-link text-sm">Watch Video</a>
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-center bg-white p-4 rounded-md shadow-sm hover:shadow-lg transition duration-150 border-l-4 border-purple-600">
+                            <p class="text-gray-700 font-medium">2. User Management & Permissions</p>
+                            <div class="flex items-center space-x-3">
+                                <span class="video-message-area text-xs py-1 px-2 rounded-md font-bold text-red-700 bg-red-100 hidden"></span>
+                                <a href="#" class="bg-purple-600 text-white py-1 px-3 rounded-md hover:bg-purple-700 transition duration-150 ease-in-out video-link text-sm">Watch Video</a>
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-center bg-white p-4 rounded-md shadow-sm hover:shadow-lg transition duration-150 border-l-4 border-purple-600">
+                            <p class="text-gray-700 font-medium">3. Basic Linux Networking</p>
+                            <div class="flex items-center space-x-3">
+                                <span class="video-message-area text-xs py-1 px-2 rounded-md font-bold text-red-700 bg-red-100 hidden"></span>
+                                <a href="#" class="bg-purple-600 text-white py-1 px-3 rounded-md hover:bg-purple-700 transition duration-150 ease-in-out video-link text-sm">Watch Video</a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="bg-purple-50 rounded-lg p-6 shadow-md">
-                    <h3 class="text-xl font-semibold text-purple-700 mb-2">Linux File System Explained</h3>
-                    <p class="text-gray-700">Understanding the Linux directory structure and permissions.</p>
-                    <a href="#" class="inline-block mt-4 bg-purple-600 text-white py-2 px-4 rounded-md hover:bg-purple-700 transition duration-150 ease-in-out video-link">Watch Video</a>
+
+                <div class="p-4 bg-green-50 rounded-lg shadow-inner">
+                    <h4 class="text-2xl font-semibold text-green-700 mb-4 border-b border-green-300 pb-2">🛠️ DevOps Tools (Docker & Jenkins)</h4>
+                    
+                    <div class="space-y-4">
+                        <div class="flex justify-between items-center bg-white p-4 rounded-md shadow-sm hover:shadow-lg transition duration-150 border-l-4 border-green-600">
+                            <p class="text-gray-700 font-medium">1. Docker Containerization Basics</p>
+                            <div class="flex items-center space-x-3">
+                                <span class="video-message-area text-xs py-1 px-2 rounded-md font-bold text-red-700 bg-red-100 hidden"></span>
+                                <a href="#" class="bg-green-600 text-white py-1 px-3 rounded-md hover:bg-green-700 transition duration-150 ease-in-out video-link text-sm">Watch Video</a>
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-center bg-white p-4 rounded-md shadow-sm hover:shadow-lg transition duration-150 border-l-4 border-green-600">
+                            <p class="text-gray-700 font-medium">2. Setting up a Basic Jenkins Pipeline</p>
+                            <div class="flex items-center space-x-3">
+                                <span class="video-message-area text-xs py-1 px-2 rounded-md font-bold text-red-700 bg-red-100 hidden"></span>
+                                <a href="#" class="bg-green-600 text-white py-1 px-3 rounded-md hover:bg-green-700 transition duration-150 ease-in-out video-link text-sm">Watch Video</a>
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-center bg-white p-4 rounded-md shadow-sm hover:shadow-lg transition duration-150 border-l-4 border-green-600">
+                            <p class="text-gray-700 font-medium">3. Introduction to Kubernetes</p>
+                            <div class="flex items-center space-x-3">
+                                <span class="video-message-area text-xs py-1 px-2 rounded-md font-bold text-red-700 bg-red-100 hidden"></span>
+                                <a href="https://www.youtube.com/watch?v=JZTi9NNPaV4" class="bg-green-600 text-white py-1 px-3 rounded-md hover:bg-green-700 transition duration-150 ease-in-out video-link text-sm">Watch Video</a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="bg-red-50 rounded-lg p-6 shadow-md">
-                    <h3 class="text-xl font-semibold text-red-700 mb-2">Hadoop HDFS Architecture</h3>
-                    <p class="text-gray-700">Deep dive into the Hadoop Distributed File System.</p>
-                    <a href="#" class="inline-block mt-4 bg-red-600 text-white py-2 px-4 rounded-md hover:bg-red-700 transition duration-150 ease-in-out video-link">Watch Video</a>
-                </div>
+
             </div>
         </section>
 
-        <!-- Attendance Section -->
-        <section class="mb-10">
-            <h2 class="text-3xl font-bold text-gray-800 mb-6 text-center">Your Attendance</h2>
-            <div class="bg-purple-50 rounded-lg p-6 shadow-md">
-                <p class="text-gray-700 mb-2"><strong>Student Name:</strong> John Doe</p>
-                <p class="text-gray-700 mb-2"><strong>Current Course:</strong> DevOps Masterclass - Batch 101</p>
-                <p class="text-gray-700 mb-2"><strong>Classes Attended (July 2025):</strong> 12 / 15</p>
-                <p class="text-gray-700"><strong>Attendance Rate:</strong> 80%</p>
-                <button class="mt-4 bg-purple-600 text-white py-2 px-4 rounded-md hover:bg-purple-700 transition duration-150 ease-in-out attendance-button">View Full Report</button>
-            </div>
-        </section>
-
-        <!-- About Section -->
         <section class="mb-10">
             <h2 class="text-3xl font-bold text-gray-800 mb-6 text-center">About Cloud Nation</h2>
             <div class="bg-gray-50 rounded-lg p-6 shadow-md text-left">
@@ -166,31 +215,86 @@
             Logout
         </button>
 
-        <!-- Message Box for alerts -->
-        <div id="messageBox" class="hidden mt-6 p-3 rounded-md text-sm text-center" role="alert"></div>
+        <div id="messageBox" class="hidden mt-6 p-3 rounded-md text-sm text-center font-bold" role="alert"></div>
     </div>
 
     <script>
-        // Function to show a custom message box instead of alert()
+        // --- General Message Function (for Course/Logout buttons) ---
         function showMessageBox(message, type = 'info') {
             const messageBox = document.getElementById('messageBox');
             messageBox.textContent = message;
+            // Clear all possible styling classes
             messageBox.classList.remove('hidden', 'bg-red-100', 'text-red-700', 'bg-green-100', 'text-green-700', 'bg-blue-100', 'text-blue-700');
 
+            // Apply new styling
             if (type === 'error') {
-                messageBox.classList.add('bg-red-100', 'text-red-700');
+                messageBox.classList.add('bg-red-100', 'text-red-700'); 
             } else if (type === 'success') {
                 messageBox.classList.add('bg-green-100', 'text-green-700');
-            } else { // default to info
+            } else { // default to info (blue)
                 messageBox.classList.add('bg-blue-100', 'text-blue-700');
             }
             messageBox.classList.remove('hidden');
+
+            messageBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            
+            // Auto-hide general messages after 4 seconds
+            setTimeout(() => {
+                messageBox.classList.add('hidden');
+            }, 4000);
         }
+
+        // --- Video Message Function (appears next to the button) ---
+        function showVideoMessage(linkElement, message, type = 'error') {
+            // Find the parent container that holds the message and the link
+            const container = linkElement.closest('.flex.items-center.space-x-3');
+            // Find the message area within that container
+            const messageArea = container.querySelector('.video-message-area');
+            
+            if (!messageArea) return; 
+
+            // Set message and clear old classes
+            messageArea.textContent = message;
+            messageArea.classList.remove('text-red-700', 'bg-red-100', 'text-green-700', 'bg-green-100', 'opacity-0');
+            messageArea.classList.add('opacity-100'); // Ensure visible
+            
+            // Apply new styling and button flash for error
+            if (type === 'error') {
+                messageArea.classList.add('text-red-700', 'bg-red-100');
+                
+                // Add button flash for immediate feedback
+                linkElement.classList.remove('bg-yellow-600', 'hover:bg-yellow-700', 'bg-purple-600', 'hover:bg-purple-700', 'bg-green-600', 'hover:bg-green-700');
+                linkElement.classList.add('bg-red-500');
+                setTimeout(() => {
+                    linkElement.classList.remove('bg-red-500');
+                    // Reapply original color (based on section parent)
+                    const sectionParent = linkElement.closest('.bg-yellow-50, .bg-purple-50, .bg-green-50');
+                    if (sectionParent) {
+                        if (sectionParent.classList.contains('bg-yellow-50')) linkElement.classList.add('bg-yellow-600', 'hover:bg-yellow-700');
+                        else if (sectionParent.classList.contains('bg-purple-50')) linkElement.classList.add('bg-purple-600', 'hover:bg-purple-700');
+                        else if (sectionParent.classList.contains('bg-green-50')) linkElement.classList.add('bg-green-600', 'hover:bg-green-700');
+                    }
+                }, 50); 
+            } else if (type === 'success') {
+                messageArea.classList.add('text-green-700', 'bg-green-100');
+            }
+            
+            // Make it visible
+            messageArea.classList.remove('hidden');
+
+            // Auto-hide the message after 4 seconds with a fade-out effect
+            setTimeout(() => {
+                messageArea.classList.add('opacity-0');
+                setTimeout(() => {
+                    messageArea.classList.add('hidden'); 
+                    messageArea.textContent = ''; // Clear text
+                }, 500); // Wait for transition duration
+            }, 4000);
+        }
+
 
         document.getElementById('logoutButton').addEventListener('click', function() {
             showMessageBox('Logging out... (This is a demo. No actual logout occurs.)', 'info');
-            // In a real application, you would clear session data and redirect to the login page
-            // window.location.href = '/login.html'; // Assuming your login page is login.html
         });
 
         // Add event listeners for course buttons
@@ -201,18 +305,24 @@
             });
         });
 
-        // Add event listeners for video links
+        // The core logic to handle video links:
         document.querySelectorAll('.video-link').forEach(link => {
             link.addEventListener('click', function(event) {
-                event.preventDefault(); // Prevent default link behavior
-                const videoTitle = this.closest('div').querySelector('h3').textContent;
-                showMessageBox(`Playing video: "${videoTitle}". (This is a demo link.)`, 'info');
-            });
-        });
+                // 1. STOP the link from navigating immediately (crucial for placeholder links)
+                event.preventDefault(); 
+                
+                const videoUrl = this.href;
 
-        // Add event listener for attendance button
-        document.querySelector('.attendance-button').addEventListener('click', function() {
-            showMessageBox('Viewing full attendance report... (This is a demo.)', 'info');
+                // 2. Check if the URL ends with a placeholder fragment (#)
+                if (videoUrl.endsWith('#')) {
+                    // Placeholder link: show red error message next to the button
+                    showVideoMessage(this, `Video not available!`, 'error');
+                } else {
+                    // Valid link: open it manually in a new tab
+                    window.open(videoUrl, '_blank');
+                    showVideoMessage(this, `Launching video...`, 'success');
+                }
+            });
         });
     </script>
 </body>
